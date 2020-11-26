@@ -1,10 +1,10 @@
-package com.example.demo;
+package fr.mohzaar.ordering;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DemoApplicationTests {
+class OrderingApplicationTests {
 
 	@Test
 	void contextLoads() {

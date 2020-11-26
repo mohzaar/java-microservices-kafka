@@ -1,13 +1,13 @@
-package com.example.demo;
+package fr.mohzaar.ordering;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class OrderingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(OrderingApplication.class, args);
 	}
 
 }
