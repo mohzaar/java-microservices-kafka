@@ -2,8 +2,8 @@
 set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
-    CREATE DATABASE ordering-db;
-    GRANT ALL PRIVILEGES ON DATABASE ordering-db TO dev;
-    CREATE DATABASE shipping-db;
-    GRANT ALL PRIVILEGES ON DATABASE shipping-db TO dev;
+    CREATE DATABASE ordering;
+    GRANT ALL PRIVILEGES ON DATABASE ordering TO dev;
+    CREATE DATABASE shipping;
+    GRANT ALL PRIVILEGES ON DATABASE shipping TO dev;
 EOSQL

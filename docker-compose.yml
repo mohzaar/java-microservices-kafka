@@ -4,6 +4,7 @@ services:
     postgres:
         build: db
         environment:
+            POSTGRES_MULTIPLE_DATABASES: ordering,shipping
             POSTGRES_PASSWORD: dev
             POSTGRES_USER: dev
     ordering-service:
