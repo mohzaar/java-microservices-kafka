@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+    postgres:
+        build: db
+        environment:
+            POSTGRES_PASSWORD: dev
+            POSTGRES_USER: dev
+    ordering-service:
+        build: ordering
+        links:
+            - postgres
+    shipping-service:
+        build: shipping
+        links:
+            - postgres
+
