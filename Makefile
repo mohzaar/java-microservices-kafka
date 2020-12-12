@@ -4,3 +4,6 @@ build-images:
 	cd ordering/ && mvn package && docker build -t ms-kafka/ordering .	
 	cd ..
 	cd shipping/ && mvn package && docker build -t ms-kafka/shipping .	
+
+build-db:
+	cd db/ && docker build -t postgres-databases .
