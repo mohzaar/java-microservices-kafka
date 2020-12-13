@@ -7,3 +7,7 @@ build-images:
 
 build-db:
 	cd db/ && docker build -t postgres-databases .
+
+clean-build:
+	mvn clean package -Dmaven.test.skip=true
+	docker-compose build
