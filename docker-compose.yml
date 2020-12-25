@@ -3,20 +3,22 @@ version: '3'
 services:
     postgres:
         build: db
+        #image: mohzaar/ms-kafka-postgres:latest
         environment:
             POSTGRES_MULTIPLE_DATABASES: ordering,shipping
             POSTGRES_PASSWORD: dev
             POSTGRES_USER: dev
-    ordering-service:
+    ordering:
         build: ordering
+        #image: mohzaar/ms-kafka-order:latest
         links:
             - postgres
         ports:
-        -   80:8080
-    shipping-service:
+        - 81:8080
+    shipping:
         build: shipping
+        #image: mohzaar/ms-kafka-shipping:latest
         links:
             - postgres
         ports:
-            -   81:8080
-
+            - 82:8080

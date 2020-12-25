@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (HEAD)
+    kompose.version: 1.16.0 (0c01309)
   creationTimestamp: null
   labels:
     io.kompose.service: shipping-service
@@ -16,18 +16,15 @@ spec:
   strategy: {}
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
         io.kompose.service: shipping-service
     spec:
       containers:
-        - image: shipping-service
-          name: shipping-service
-          ports:
-            - containerPort: 8080
-          resources: {}
+      - image: mohzaar/ms-kafka-shipping:latest
+        name: shipping-service
+        ports:
+        - containerPort: 8080
+        resources: {}
       restartPolicy: Always
 status: {}

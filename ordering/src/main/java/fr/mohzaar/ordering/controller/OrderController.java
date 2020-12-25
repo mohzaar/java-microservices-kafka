@@ -19,8 +19,13 @@ public class OrderController {
         return orderRepository.save(order);
     }
 
-    @GetMapping
+    @GetMapping(value = "/hello")
     public List<Order> get(){
         return orderRepository.findAll();
+    }
+
+    @GetMapping
+    public String hello(){
+        return "Hello World Order Service";
     }
 }

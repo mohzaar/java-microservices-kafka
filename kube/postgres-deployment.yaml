@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   annotations:
     kompose.cmd: kompose convert
-    kompose.version: 1.22.0 (HEAD)
+    kompose.version: 1.16.0 (0c01309)
   creationTimestamp: null
   labels:
     io.kompose.service: postgres
@@ -16,23 +16,32 @@ spec:
   strategy: {}
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert
-        kompose.version: 1.22.0 (HEAD)
       creationTimestamp: null
       labels:
         io.kompose.service: postgres
     spec:
       containers:
-        - env:
-            - name: POSTGRES_MULTIPLE_DATABASES
-              value: ordering,shipping
-            - name: POSTGRES_PASSWORD
-              value: dev
-            - name: POSTGRES_USER
-              value: dev
-          image: postgres
-          name: postgres
-          resources: {}
+      - env:
+        - name: POSTGRES_MULTIPLE_DATABASES
+          value: ordering,shipping
+        - name: POSTGRES_PASSWORD
+          value: dev
+        - name: POSTGRES_USER
+          value: dev
+        image: mohzaar/ms-kafka-postgres:latest
+        name: postgres
+        resources: {}
       restartPolicy: Always
 status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    io.kompose.service: postgres
+spec:
+  selector:
+    io.kompose.service: postgres
+  ports:
+    - port: 5432
