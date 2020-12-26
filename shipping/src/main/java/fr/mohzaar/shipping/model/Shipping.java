@@ -1,4 +1,4 @@
-package fr.mohzaar.shipping;
+package fr.mohzaar.shipping.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

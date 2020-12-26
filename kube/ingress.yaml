@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /order
+        backend:
+          serviceName: ordering-service
+          servicePort: 81
+      - path: /shipping
+        backend:
+          serviceName: shipping-service
+          servicePort: 82

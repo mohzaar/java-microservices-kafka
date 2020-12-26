@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/order")
+@RequestMapping(value="/order")
 public class OrderController {
 
     @Autowired
@@ -26,6 +26,6 @@ public class OrderController {
 
     @GetMapping
     public String hello(){
-        return "Hello World Order Service";
+        return "Hello World Order Service Kubenertes Edition\n";
     }
 }

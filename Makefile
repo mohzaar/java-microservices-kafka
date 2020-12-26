@@ -10,11 +10,17 @@ build-db:
 
 clean-build:
 	docker-compose rm
-	docker rmi microservices-kafka_shipping-service || echo "Image does not exist"
-	docker rmi microservices-kafka_ordering-service || echo "Image does not exist"
+	docker rmi -f microservices-kafka_shipping-service || echo "Image does not exist"
+	docker rmi -f microservices-kafka_ordering-service || echo "Image does not exist"
 	docker rmi microservices-kafka_postgres || echo "Image does not exist"
 	mvn clean package -Dmaven.test.skip=true
 	docker-compose build
+	docker tag microservices-kafka_ordering:latest mohzaar/ms-kafka-order:latest
+	docker tag microservices-kafka_shipping:latest mohzaar/ms-kafka-shipping:latest
+
+docker-push:
+	docker push mohzaar/ms-kafka-order:latest
+	docker push mohzaar/ms-kafka-shipping:latest
 
 provision-cluster-db:
 	kubectl create -f kube/postgres/postgres-configmap.yml

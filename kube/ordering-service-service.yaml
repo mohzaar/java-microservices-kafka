@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: ordering-service
   name: ordering-service
 spec:
+  type: LoadBalancer
   ports:
   - name: "81"
     port: 81

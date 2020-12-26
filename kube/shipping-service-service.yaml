@@ -9,6 +9,7 @@ metadata:
     io.kompose.service: shipping-service
   name: shipping-service
 spec:
+  type: LoadBalancer
   ports:
   - name: "82"
     port: 82
