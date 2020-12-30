@@ -2,8 +2,14 @@ apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   name: ingress
+  annotations:
+    networking.gke.io/managed-certificates: cert-mohzaar
 spec:
+  backend:
+    serviceName: ordering-service
+    servicePort: 81
   rules:
+  - host: api.mohzaar.fr
   - http:
       paths:
       - path: /order
