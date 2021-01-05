@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: ingress
   annotations:
+    kubernetes.io/ingress.allow-http: "false"
     networking.gke.io/managed-certificates: cert-mohzaar
 spec:
   backend:

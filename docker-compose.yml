@@ -11,19 +11,11 @@ services:
             KAFKA_ADVERTISED_PORT: 9092
             KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
             KAFKA_CREATE_TOPICS: "order:5:1"
-    postgres:
-        build: db
-        #image: mohzaar/ms-kafka-postgres:latest
-        environment:
-            POSTGRES_MULTIPLE_DATABASES: ordering,shipping
-            POSTGRES_PASSWORD: dev
-            POSTGRES_USER: dev
     ordering:
         build: ordering
         #image: mohzaar/ms-kafka-order:latest
         links:
             - kafka
-            - postgres
         ports:
         - 81:8080
         environment:
@@ -33,7 +25,6 @@ services:
         #image: mohzaar/ms-kafka-shipping:latest
         links:
             - kafka
-            - postgres
         ports:
             - 82:8080
         environment:

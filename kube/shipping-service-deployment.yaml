@@ -21,6 +21,9 @@ spec:
         io.kompose.service: shipping-service
     spec:
       containers:
+      - env:
+        - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+          value: kafka:9092
       - image: mohzaar/ms-kafka-shipping:latest
         name: shipping-service
         readinessProbe:

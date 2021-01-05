@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.16.0 (0c01309)
+  labels:
+    io.kompose.service: zookeeper
+  name: zookeeper
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: zookeeper
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        io.kompose.service: zookeeper
+    spec:
+      containers:
+      - name: zookeeper
+        image: wurstmeister/zookeeper:3.4.6
+        resources: {}
+      restartPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zookeeper
+  labels:
+    io.kompose.service: zookeeper
+spec:
+  selector:
+    io.kompose.service: zookeeper
+  ports:
+    - port: 2181
