@@ -1,0 +1,13 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+   <h1><a [routerLink]="['/']">SHOP IT</a></h1>
+    <span class="spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon routerLink="/cart"  *ngIf="items.length  > 0" matBadge="{{items.length}}" matBadgeOverlap="false" matBadgePosition="before" matBadgeColor="accent">shopping_cart</mat-icon>
+      <mat-icon *ngIf="items.length == 0" matBadgeOverlap="false" matBadgePosition="before" matBadgeColor="accent">shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>local_shipping</mat-icon>
+    </button>
+  </mat-toolbar-row>
+  </mat-toolbar>

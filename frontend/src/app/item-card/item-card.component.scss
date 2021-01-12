@@ -1,0 +1,16 @@
+mat-card {
+  width: 300px;
+
+  mat-icon {
+    background: linear-gradient(#42a1ec, #0070c9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.mat-card-image {
+  height: 250px;
+}
+
+.no-click {
+  pointer-events: none;
+}

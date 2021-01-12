@@ -1,0 +1,8 @@
+<div class="margin">
+<h1>Choose your new Apple product.</h1>
+<div class="content" fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div *ngFor="let number of numbers" fxFlex.xs="100%" fxFlex.sm="33%" >
+        <app-item-card [item] ="items[0]"></app-item-card>
+    </div>
+</div>
+</div>

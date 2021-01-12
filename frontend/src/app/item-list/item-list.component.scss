@@ -1,0 +1,22 @@
+h1 {
+  padding-top: 2%;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.margin {
+   margin-left: 20%;
+   margin-right: 20%;
+}
+
+.content { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content > app-item-card { 
+    width: 200px; 
+  }

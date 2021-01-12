@@ -1,0 +1,21 @@
+h1 {
+    margin: 0 auto;
+    font-weight: 900;
+    letter-spacing: 1rem;
+    a {
+    text-decoration: none;
+    color: white;
+
+    &:hover{
+        color:grey
+    }
+    }
+
+}
+mat-toolbar{
+    background: rgba(0,0,0,0.8);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+    color:white;
+    display: flex;
+}
