@@ -1,15 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 @font-face {
     font-family: "SF Pro";
-    src: url("assets/fonts/FontsFree-Net-SFProDisplay-Bold.ttf") format("ttf"),
-   }
-html, body { height: 100%; }
-body { margin: 0; font-family: "SF Pro", "Helvetica Neue", sans-serif; }
+    src: url("assets/fonts/FontsFree-Net-SFProDisplay-Bold.ttf") format("ttf");
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: "SF Pro", "Helvetica Neue", sans-serif;
+}
 
 h1 {
-    font-family: "SF Pro";
+    font-family: "SF Pro", "Helvetica Neue", sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    padding-top: 2%;
 }
 
 button:focus {
-    outline:none;
- }
+    outline: none;
+}

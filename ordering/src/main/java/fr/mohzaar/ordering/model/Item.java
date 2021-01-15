@@ -28,5 +28,7 @@ public class Item {
 
     private String description;
 
+    private String description1;
 
+    private String description2;
 }

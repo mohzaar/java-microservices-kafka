@@ -1,6 +1,6 @@
 package fr.mohzaar.ordering.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -21,6 +21,7 @@ public class Cart {
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    private ArrayList<Item> itemList;
+    @OneToMany
+    private List<Item> itemList;
     
 }

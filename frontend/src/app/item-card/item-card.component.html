@@ -4,9 +4,9 @@
     </mat-card-header>
     <img mat-card-image src="{{item!.image}}" />
     <mat-card-content>
-      <p *ngFor="let desc of item!.description">
-        {{desc}}
-      </p>
+      <p>{{item!.description}}</p>
+      <p>{{item!.description1}}</p>
+      <p>{{item!.description2}}</p>
     </mat-card-content>
     <mat-card-actions>
       <button mat-button (click)  ="addToCart()">

@@ -2,6 +2,7 @@ package fr.mohzaar.ordering.controller;
 
 import fr.mohzaar.ordering.model.Cart;
 import fr.mohzaar.ordering.model.Item;
+import fr.mohzaar.ordering.model.ItemDTO;
 import fr.mohzaar.ordering.model.Order;
 import fr.mohzaar.ordering.repository.CartRepository;
 import fr.mohzaar.ordering.repository.ItemRepository;
@@ -12,10 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/order")
+@CrossOrigin(origins = "*")
 public class OrderController {
 
     private OrderRepository orderRepository;
@@ -58,19 +63,19 @@ public class OrderController {
         return "Order service: Health Check\n";
     }
 
-    @GetMapping(value = "/cart/{id}")
-    public ResponseEntity<Cart> getCart(@PathVariable String id) {
-        Cart cart = this.cartRepository.findById(id).get();
+    @GetMapping(value = "/cart")
+    public ResponseEntity<Cart> getCart() {
+        Cart cart = this.cartRepository.findAll().stream().findFirst().get();
         return cart != null ? new ResponseEntity<>(cart, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
 
-    @PutMapping
+    @PutMapping(value = "/cart")
     public ResponseEntity<Cart> updateCart(@RequestBody Cart cart) {
         Cart updatedCart = this.cartRepository.save(cart);
         return updatedCart != null ? new ResponseEntity<>(updatedCart, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
     }
 
-    @PostMapping
+    @PostMapping(value = "/cart")
     public ResponseEntity<Cart> postCart(@RequestBody Cart cart) {
         Cart result = this.cartRepository.save(cart);
         return result != null ? new ResponseEntity<>(result, HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);

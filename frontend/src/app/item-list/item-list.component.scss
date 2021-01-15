@@ -1,6 +1,13 @@
-h1 {
+@import '../../styles.scss';
+
+h1{
   padding-top: 2%;
-  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h3 {
   display: flex;
   justify-content: center;
   align-items: center;

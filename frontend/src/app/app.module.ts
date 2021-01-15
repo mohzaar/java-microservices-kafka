@@ -10,6 +10,8 @@ import { ItemListComponent } from './item-list/item-list.component';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CartViewComponent } from './cart-view/cart-view.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CartViewComponent } from './cart-view/cart-view.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

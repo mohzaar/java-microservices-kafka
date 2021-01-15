@@ -17,6 +17,7 @@ clean-build:
 	docker-compose build
 	docker tag microservices-kafka_ordering:latest mohzaar/ms-kafka-order:latest
 	docker tag microservices-kafka_shipping:latest mohzaar/ms-kafka-shipping:latest
+	docker-compose up
 
 docker-push:
 	docker push mohzaar/ms-kafka-order:latest

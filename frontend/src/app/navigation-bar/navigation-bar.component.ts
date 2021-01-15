@@ -14,6 +14,7 @@ export class NavigationBarComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.items = this.cartService.getItems();
   }
 
 }
