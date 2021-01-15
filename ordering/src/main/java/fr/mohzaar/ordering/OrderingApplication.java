@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class OrderingApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(OrderingApplication.class, args);
+    SpringApplication.run(OrderingApplication.class, args);
+
 	}
 
   @GetMapping
