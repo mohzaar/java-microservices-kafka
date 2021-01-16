@@ -12,6 +12,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { CartViewComponent } from './cart-view/cart-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { CheckoutDialogComponent } from './checkout-dialog/checkout-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
     NavigationBarComponent,
     ItemListComponent,
     ItemCardComponent,
-    CartViewComponent
+    CartViewComponent,
+    CheckoutDialogComponent
   ],
   imports: [
     BrowserModule,

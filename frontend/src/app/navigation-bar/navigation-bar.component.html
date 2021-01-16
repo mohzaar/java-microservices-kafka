@@ -1,13 +1,27 @@
-<mat-toolbar>
-  <mat-toolbar-row>
-   <h1><a [routerLink]="['/']">SHOP IT</a></h1>
-    <span class="spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon routerLink="/cart"  *ngIf="items && items.length  > 0" matBadge="{{items.length}}" matBadgeOverlap="false" matBadgePosition="before" matBadgeColor="primary" fontSet="material-icons-outlined">shopping_bag</mat-icon>
-      <mat-icon routerLink="/cart" *ngIf="!items || items.length == 0" matBadgeOverlap="false" matBadgePosition="before" matBadgeColor="primary" fontSet="material-icons-outlined">shopping_bag</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon fontSet="material-icons-outlined">local_shipping</mat-icon>
-    </button>
-  </mat-toolbar-row>
-  </mat-toolbar>
+<div class="d-flex w-100 text-center text-white bg">
+  <div class="text-center text-white cover-container d-flex w-100  p-3 mx-auto flex-column">
+    <header class="mb-auto">
+      <div>
+        <h1 class="float-md-start mb-0 title" [routerLink] ="['/']">Shop it</h1>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a class="nav-link" aria-current="page">
+            <button mat-icon-button aria-label="Example icon-button with heart icon">
+              <mat-icon routerLink="/cart" *ngIf="items && items.length  > 0" matBadge="{{items.length}}"
+                matBadgeOverlap="false" matBadgePosition="before" matBadgeColor="primary"
+                fontSet="material-icons-outlined">
+                shopping_bag</mat-icon>
+              <mat-icon routerLink="/cart" *ngIf="!items || items.length == 0" matBadgeOverlap="false"
+                matBadgePosition="before" matBadgeColor="primary" fontSet="material-icons-outlined">shopping_bag
+              </mat-icon>
+            </button>
+          </a>
+          <a class="nav-link">
+            <button mat-icon-button class="example-icon">
+              <mat-icon fontSet="material-icons-outlined">local_shipping</mat-icon>
+            </button>
+          </a>
+        </nav>
+      </div>
+    </header>
+  </div>
+</div>

@@ -18,7 +18,6 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit(): void {
     this.initDatas();
-    console.log(this.cart);
   }
 
   async initDatas(){

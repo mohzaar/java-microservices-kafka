@@ -31,4 +31,10 @@ export class CartViewComponent implements OnInit {
   removeItem(item: Item) {
     this.items = this.cartService.removeItemFromCard(item);
   }
+
+  getPrice(){
+    let price = 0;
+    this.items.forEach((d) => price += d.price);
+    return price;
+  }
 }

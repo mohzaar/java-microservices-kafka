@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cart } from '../interface/cart';
 import { Item } from '../interface/item';
 import { CartService } from '../service/cart.service';
 
@@ -9,12 +10,14 @@ import { CartService } from '../service/cart.service';
 })
 export class NavigationBarComponent implements OnInit {
   items: Item[] = [];
+  @Input() cart: Cart = {} as Cart;
+
   constructor(private cartService: CartService) {
-    this.items = cartService.getItems();
    }
 
   ngOnInit(): void {
-    this.items = this.cartService.getItems();
+    this.items = this.cart.itemList;
+    console.log(this.items);
   }
 
 }

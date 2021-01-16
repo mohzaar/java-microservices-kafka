@@ -1,29 +1,56 @@
-<mat-list class="center" *ngIf="!items || items.length == 0 ">
-    <h1>Your bag is empty.</h1>
-    <h3>Go get some cool stuff.</h3>
-    <button mat-flat-button routerLink="/">Continue shopping.</button>
-</mat-list>
-
-<div *ngIf="items && items.length > 0">
-    <div class="center-div">
-        <h1>Review your bag.</h1>
-        <h3>Free delivery and free return.</h3>
-
-        <div fxLayout="row" class="row" *ngFor="let item of items; let i = index">
-            <div fxFlex>
-                <img mat-card-image src="{{item.image2}}" />
-            </div>
-
-            <div fxFlex>
-                <h2>{{item.name}}</h2>
-                <p>{{item.description}}</p>
-                <p>{{item.description1}}</p>
-                <p>{{item.description2}}</p>
-                <button (click) = "removeItem(item)">Remove</button>
-            </div>
+<div *ngIf="!items || items.length == 0" class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="text-center lead">Your bag is empty.</h1>
+            <h3 class="text-center lead">Go get some cool stuff.</h3>
+            <button mat-flat-button routerLink="/" class="text-center continue">Continue shopping.</button>
         </div>
-        <hr>
-        <h2>Total : $600</h2>
     </div>
+</div>
 
+<div *ngIf="items && items.length" class="container">
+    <h1 class="text-center">Review your bag.</h1>
+    <h3 class="text-center">Free delivery and free return.</h3>
+    <div class="row mb-3" *ngFor="let item of items">
+        <div class="col-md-4 themed-grid-col">
+            <img class="img-thumbnail img-fluid" src="{{item.image2}}" />
+        </div>
+        <div class="col-md-8 justify-content-center mx-auto">
+            <h2 class="font-weight-bold">{{item.name}}</h2>
+            <hr>
+            <p>{{item.description}}</p>
+            <p>{{item.description1}}</p>
+            <p>{{item.description2}}</p>
+            <button class="btn btn-link" (click)="removeItem(item)">Remove</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row mb-3 subtotal">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group mb-4">
+                <li class="list-group-item d-flex justify-content-between">
+                    <h2>Subtotal (USD)</h2>
+                    <h2>
+                        <strong>${{getPrice()}}</strong>
+                    </h2>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <h2>Shipping</h2>
+                    <h2>
+                        <strong>FREE</strong>
+                    </h2>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <h2>Total (USD)</h2>
+                    <h2>
+                        <strong>${{getPrice()}}</strong>
+                    </h2>
+                </li>
+            </ul>
+            <button mat-flat-button routerLink="/" class="text-center w-100 continue">Checkout</button>
+        </div>
+    </div>
 </div>
