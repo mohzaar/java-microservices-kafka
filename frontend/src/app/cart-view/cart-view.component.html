@@ -21,6 +21,12 @@
             <p>{{item.description}}</p>
             <p>{{item.description1}}</p>
             <p>{{item.description2}}</p>
+            <p><strong>
+                    Estimated delivery date: 3 to 4 business days.
+                </strong></p>
+            <p><strong>
+                   Price  
+                </strong> ${{item.price}}</p>
             <button class="btn btn-link" (click)="removeItem(item)">Remove</button>
         </div>
     </div>
@@ -50,7 +56,7 @@
                     </h2>
                 </li>
             </ul>
-            <button mat-flat-button routerLink="/" class="text-center w-100 continue">Checkout</button>
+            <button mat-flat-button class="text-center w-100 continue" (click)="openDialog()">Checkout</button>
         </div>
     </div>
 </div>
