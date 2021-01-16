@@ -3,10 +3,11 @@
         <div class="row g-3">
             <h1 class="mb-3">Billing address</h1>
             <form class="needs-validation" novalidate>
-                <div class="row g-3">
+                <div [formGroup]="customerForm" class="row g-3">
                     <div class="col-sm-6">
                         <label for="firstName" class="form-label">First name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <input type="text" formControlName="name" class="form-control" id="firstName" placeholder=""
+                            value="" required>
                         <div class="invalid-feedback">
                             Valid first name is required.
                         </div>
@@ -14,42 +15,34 @@
 
                     <div class="col-sm-6">
                         <label for="lastName" class="form-label">Last name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <input type="text" formControlName="lastName" class="form-control" id="lastName" placeholder="" value="" required>
                         <div class="invalid-feedback">
                             Valid last name is required.
                         </div>
                     </div>
 
-                    <div class="col-12">
-                        <label for="username" class="form-label">Username</label>
-                        <div class="input-group">
-                            <span class="input-group-text">@</span>
-                            <input type="text" class="form-control" id="username" placeholder="Username" required>
-                            <div class="invalid-feedback">
-                                Your username is required.
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-12">
-                        <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="email" placeholder="you@example.com">
                         <div class="invalid-feedback">
                             Please enter a valid email address for shipping updates.
                         </div>
                     </div>
+                </div>
 
+                <div [formGroup] ="addressForm" class="row g-3">
                     <div class="col-12">
                         <label for="address" class="form-label">Address</label>
-                        <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                        <input type="text" formControlName="street" class="form-control" id="address" placeholder="1234 Main St" required>
                         <div class="invalid-feedback">
                             Please enter your shipping address.
                         </div>
                     </div>
 
                     <div class="col-md-5">
-                        <label for="country" class="form-label">Country</label>
-                        <select class="form-select" id="country" required>
+                        <label for="country"  class="form-label">Country</label>
+                        <select class="form-select" formControlName="country" id="country" required>
                             <option value="">Choose...</option>
                             <option>France</option>
                         </select>
@@ -59,8 +52,8 @@
                     </div>
 
                     <div class="col-md-4">
-                        <label for="state" class="form-label">State</label>
-                        <select class="form-select" id="state" required>
+                        <label for="state" class="form-label">City</label>
+                        <select class="form-select" formControlName="city" id="state" required>
                             <option value="">Choose...</option>
                             <option>Paris</option>
                         </select>
@@ -71,12 +64,14 @@
 
                     <div class="col-md-3">
                         <label for="zip" class="form-label">Zip</label>
-                        <input  maxLenght ="5" type="text" pattern="[0-9]+"  class="form-control" id="zip" placeholder="" required>
+                        <input maxlength="5" type="text"  formControlName="zip" pattern="[0-9]+" class="form-control" id="zip" placeholder=""
+                            required>
                         <div class="invalid-feedback">
                             Zip code required.
                         </div>
                     </div>
                 </div>
+
                 <hr class="my-4">
 
                 <h4 class="mb-3">Payment</h4>
@@ -92,10 +87,10 @@
                     </div>
                 </div>
 
-                <div class="row gy-3">
+                <div [formGroup] ="paymentForm" class="row gy-3">
                     <div class="col-md-6">
                         <label for="cc-name" class="form-label">Name on card</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                        <input type="text" formControlName="name" class="form-control" id="cc-name" placeholder="" required>
                         <small class="text-muted">Full name as displayed on card</small>
                         <div class="invalid-feedback">
                             Name on card is required
@@ -104,7 +99,7 @@
 
                     <div class="col-md-6">
                         <label for="cc-number" class="form-label">Credit card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                        <input type="number" max="9999999999999999" formControlName="creditcardnumber" maxlength="16" pattern="[0-9]+" class="form-control" id="cc-number" placeholder="16 digit number" required>
                         <div class="invalid-feedback">
                             Credit card number is required
                         </div>
@@ -112,7 +107,7 @@
 
                     <div class="col-md-3">
                         <label for="cc-expiration" class="form-label">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                        <input type="number" max="9999" formControlName="expiration" pattern="\d+" maxlength="4" class="form-control" id="cc-expiration" placeholder="DDMM" required>
                         <div class="invalid-feedback">
                             Expiration date required
                         </div>
@@ -120,14 +115,14 @@
 
                     <div class="col-md-3">
                         <label for="cc-cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                        <input type="text" max="999" maxlength="3" formControlName="cvv" class="form-control" id="cc-cvv" placeholder="3 digit code" required>
                         <div class="invalid-feedback">
                             Security code required
                         </div>
                     </div>
                 </div>
                 <hr class="my-4">
-                <button class="w-100 btn btn-primary btn-lg" type="submit">Proceed to payment</button>
+                <button class="w-100 btn btn-primary btn-lg" (click)="submitForm()" [disabled] ="paymentForm.invalid || customerForm.invalid || addressForm.invalid">Proceed to payment</button>
             </form>
         </div>
     </main>

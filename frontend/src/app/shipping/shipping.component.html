@@ -1,0 +1,47 @@
+<div *ngIf="!isLoading  && (!data || data.length == 0)" class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h1 class="text-center lead">You have no orders</h1>
+            <h3 class="text-center lead">Don't waste time, go fix the problem.</h3>
+            <button mat-flat-button routerLink="/" class="text-center continue">Home</button>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!isLoading && data && data.length > 0" class="container">
+    <h1 class="text-center">Keep tracks of your orders</h1>
+    <h3 class="text-center">You can contact us at any time.</h3>
+    <mat-accordion *ngFor="let data of data">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Order of {{data.deliveryDate | date }}
+                </mat-panel-title>
+                <mat-panel-description>
+                    by {{data.customer.name + ' ' + data.customer.lastName}}
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+    <div class="row mb-3" *ngFor="let item of data.itemList">
+        <div class="col-md-4 themed-grid-col">
+            <img class="img-thumbnail img-fluid" src="{{item.image2}}" />
+        </div>
+        <div class="col-md-8 justify-content-center mx-auto">
+            <h2 class="font-weight-bold">{{item.name}}</h2>
+            <hr>
+            <p>{{item.description}}</p>
+            <p>{{item.description1}}</p>
+            <p>{{item.description2}}</p>
+            <p><strong>
+                   Price  
+                </strong> ${{item.price}}</p>
+        </div>
+    </div>
+            <p class="text-center"><strong>
+                   Total order  
+                </strong> ${{data.totalPrice}}</p>
+            <p class="text-center"><strong>
+                 Delivered to  
+                </strong> {{data.address.street}} in {{data.address.city}} {{data.address.zip}} </p>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

@@ -2,7 +2,6 @@ package fr.mohzaar.ordering.controller;
 
 import fr.mohzaar.ordering.model.Cart;
 import fr.mohzaar.ordering.model.Item;
-import fr.mohzaar.ordering.model.ItemDTO;
 import fr.mohzaar.ordering.model.Order;
 import fr.mohzaar.ordering.repository.CartRepository;
 import fr.mohzaar.ordering.repository.ItemRepository;
@@ -13,10 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/order")
@@ -44,7 +40,7 @@ public class OrderController {
     @PostMapping
     public Order save(@RequestBody Order order) {
         Order result = orderRepository.save(order);
-        kafkaTemplate.send("order", order.getId() + "created", order);
+        kafkaTemplate.send("order", result.getId() + "created", order);
         return result;
     }
 

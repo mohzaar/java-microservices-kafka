@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment.prod';
 import { Cart } from '../interface/cart';
 import { Item } from '../interface/item';
 
@@ -17,7 +18,7 @@ export class CartService {
   }
 
   get API_URL(): string {
-    return "http://localhost:81/order/cart"
+    return environment.API_URL + '/order';
   }
 
   get cart() {
@@ -29,7 +30,7 @@ export class CartService {
   }
 
   getCart() {
-    return this.http.get(this.API_URL).toPromise();
+    return this.http.get(this.API_URL +"/cart").toPromise();
   }
 
   isAlreadyPresent(item: Item) {
@@ -38,7 +39,7 @@ export class CartService {
 
   addToCart(product: Item) {
     this.cartInterface.itemList.push(product);
-    return this.updateCart(this.cart).toPromise();
+    return this.updateCart(this.cart);
   }
 
   getItems() {
@@ -48,20 +49,25 @@ export class CartService {
   removeItemFromCard(item: Item): Item[] {
     const index = this.cart.itemList.indexOf(item);
     this.cart.itemList.splice(index, 1);
-    this.updateCart(this.cart).subscribe((value) => {
+    this.updateCart(this.cart).then((value) => {
       this.cartInterface = value as Cart;
     });
     return this.cart.itemList;
   }
 
   clearCart() {
-    this.cart.itemList = [];
-    return this.cart.itemList;
+    this.cartInterface.itemList = [];
+    this.updateCart(this.cartInterface).then((value: any) => {
+      this.cartInterface = value;
+    });
   }
 
-
   updateCart(cart: Cart) {
-    return this.http.put(this.API_URL, cart);
+    return this.http.put(this.API_URL +"/cart", cart).toPromise();
+  }
+
+  order(order:any){
+    return this.http.post(this.API_URL, order).toPromise();
   }
 
 }

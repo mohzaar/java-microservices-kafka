@@ -13,6 +13,8 @@ import { CartViewComponent } from './cart-view/cart-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { CheckoutDialogComponent } from './checkout-dialog/checkout-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShippingComponent } from './shipping/shipping.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +23,15 @@ import { CheckoutDialogComponent } from './checkout-dialog/checkout-dialog.compo
     ItemListComponent,
     ItemCardComponent,
     CartViewComponent,
-    CheckoutDialogComponent
+    CheckoutDialogComponent,
+    ShippingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     MaterialModule,
     FlexLayoutModule,
     HttpClientModule,

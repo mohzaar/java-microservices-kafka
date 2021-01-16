@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.component';
 import { Item } from '../interface/item';
 import { CartService } from '../service/cart.service';
 
-export interface Tile {
-  color: string;
-  cols: number;
-  rows: number;
-  text: string;
+export interface DataDialog {
+  itemList: Item[];
+  totalPrice: number;
 }
 
 @Component({
@@ -20,6 +20,8 @@ export class CartViewComponent implements OnInit {
   items: Item[] = [];
 
   constructor(private cartService: CartService,
+    private toastr: ToastrService,
+    private route: Router,
     private dialog: MatDialog) {
   }
 
@@ -43,10 +45,19 @@ export class CartViewComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CheckoutDialogComponent, {
+      data: {
+        itemList: this.items, totalPrice: this.getPrice()
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      if(result){
+        this.toastr.success("Congratulations !", "You order was completed with success.")
+        this.route.navigate(["shipping"]);
+      }
+      else if(result === "Error") {
+        this.toastr.error("An error occured with your order.")
+      }
     });
   }
 

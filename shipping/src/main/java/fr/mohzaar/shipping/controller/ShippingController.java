@@ -10,6 +10,7 @@ import fr.mohzaar.shipping.repository.ShippingRepository;
 
 @RestController
 @RequestMapping(value ="/shipping")
+@CrossOrigin(origins = "*")
 public class ShippingController {
 
     private ShippingRepository shippingRepository;
