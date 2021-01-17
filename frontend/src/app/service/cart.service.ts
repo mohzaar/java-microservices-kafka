@@ -18,7 +18,7 @@ export class CartService {
   }
 
   get API_URL(): string {
-    return environment.API_URL + '/order';
+      return environment.ORDER_URL + '/order';
   }
 
   get cart() {
@@ -30,7 +30,7 @@ export class CartService {
   }
 
   getCart() {
-    return this.http.get(this.API_URL +"/cart").toPromise();
+    return this.http.get(this.API_URL + "/cart").toPromise();
   }
 
   isAlreadyPresent(item: Item) {
@@ -63,10 +63,10 @@ export class CartService {
   }
 
   updateCart(cart: Cart) {
-    return this.http.put(this.API_URL +"/cart", cart).toPromise();
+    return this.http.put(this.API_URL + "/cart", cart).toPromise();
   }
 
-  order(order:any){
+  order(order: any) {
     return this.http.post(this.API_URL, order).toPromise();
   }
 

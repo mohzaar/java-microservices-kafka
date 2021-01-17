@@ -13,7 +13,7 @@ export class ShippingService {
   }
 
   get API_URL(): string {
-    return environment.API_URL + "/shipping"
+    return environment.SHIPPING_URL + "/shipping"
   }
 
   getShippingOrders() {

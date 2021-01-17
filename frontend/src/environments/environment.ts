@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://api.mohzaar.fr/'
+  API_URL: 'https://api.mohzaar.fr/',
+  ORDER_URL: 'http://localhost:81/',
+  SHIPPING_URL: 'http://localhost:82/'
 };
 
 /*

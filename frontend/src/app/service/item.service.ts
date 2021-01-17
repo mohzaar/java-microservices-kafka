@@ -10,7 +10,7 @@ export class ItemService {
     items: Array<Item> = [];
 
     get API_URL(): string {
-        return environment.API_URL + "/order/items";
+        return environment.ORDER_URL + "/order/items";
     }
 
     constructor(private http: HttpClient) { }
